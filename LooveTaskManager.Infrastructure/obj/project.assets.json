@@ -1,0 +1,123 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "LooveTaskManager.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "LooveTaskManager.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/LooveTaskManager.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LooveTaskManager.Application.dll": {}
+        }
+      },
+      "LooveTaskManager.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/LooveTaskManager.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/LooveTaskManager.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LooveTaskManager.Application/1.0.0": {
+      "type": "project",
+      "path": "../LooveTaskManager.Application/LooveTaskManager.Application.csproj",
+      "msbuildProject": "../LooveTaskManager.Application/LooveTaskManager.Application.csproj"
+    },
+    "LooveTaskManager.Domain/1.0.0": {
+      "type": "project",
+      "path": "../LooveTaskManager.Domain/LooveTaskManager.Domain.csproj",
+      "msbuildProject": "../LooveTaskManager.Domain/LooveTaskManager.Domain.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "LooveTaskManager.Application >= 1.0.0",
+      "LooveTaskManager.Domain >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\celou\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\celou\\OneDrive\\Documents\\GitHub\\LooveTaskManager\\LooveTaskManager.Infrastructure\\LooveTaskManager.Infrastructure.csproj",
+      "projectName": "LooveTaskManager.Infrastructure",
+      "projectPath": "C:\\Users\\celou\\OneDrive\\Documents\\GitHub\\LooveTaskManager\\LooveTaskManager.Infrastructure\\LooveTaskManager.Infrastructure.csproj",
+      "packagesPath": "C:\\Users\\celou\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\celou\\OneDrive\\Documents\\GitHub\\LooveTaskManager\\LooveTaskManager.Infrastructure\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\celou\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "C:\\Users\\celou\\OneDrive\\Documents\\GitHub\\LooveTaskManager\\LooveTaskManager.Application\\LooveTaskManager.Application.csproj": {
+              "projectPath": "C:\\Users\\celou\\OneDrive\\Documents\\GitHub\\LooveTaskManager\\LooveTaskManager.Application\\LooveTaskManager.Application.csproj"
+            },
+            "C:\\Users\\celou\\OneDrive\\Documents\\GitHub\\LooveTaskManager\\LooveTaskManager.Domain\\LooveTaskManager.Domain.csproj": {
+              "projectPath": "C:\\Users\\celou\\OneDrive\\Documents\\GitHub\\LooveTaskManager\\LooveTaskManager.Domain\\LooveTaskManager.Domain.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
