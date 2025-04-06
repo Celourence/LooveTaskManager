@@ -279,5 +279,17 @@ Thumbs.db
 #####
 
 .fake
-obj
-bin
+**/bin/
+**/obj/
+
+/LooveTaskManager.Tests/obj
+/LooveTaskManager.Tests/bin
+/LooveTaskManager.Application/obj
+/LooveTaskManager.Application/bin
+/LooveTaskManager.Domain/obj
+/LooveTaskManager.Domain/bin
+/LooveTaskManager.API/obj
+/LooveTaskManager.API/bin
+
+
+*.cache
