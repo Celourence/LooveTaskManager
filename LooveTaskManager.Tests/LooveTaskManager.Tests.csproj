@@ -10,8 +10,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="xunit" Version="2.5.3" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.3" />
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+    <PackageReference Include="Moq" Version="4.20.70" />
+    <PackageReference Include="xunit" Version="2.7.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.5.7">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +27,7 @@
   <ItemGroup>
     <ProjectReference Include="..\LooveTaskManager.Application\LooveTaskManager.Application.csproj" />
     <ProjectReference Include="..\LooveTaskManager.Domain\LooveTaskManager.Domain.csproj" />
+    <ProjectReference Include="..\LooveTaskManager.Infrastructure\LooveTaskManager.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

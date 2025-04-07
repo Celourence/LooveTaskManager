@@ -1,0 +1,363 @@
+2025-04-07 16:42:13.689 -03:00 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5097: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Normalmente é permitida apenas uma utilização de cada endereço de soquete (protocolo/endereço de rede/porta).
+ ---> System.Net.Sockets.SocketException (10048): Normalmente é permitida apenas uma utilização de cada endereço de soquete (protocolo/endereço de rede/porta).
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-04-07 16:52:09.435 -03:00 [INF] Now listening on: http://localhost:8103
+2025-04-07 16:52:09.470 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-04-07 16:52:09.471 -03:00 [INF] Hosting environment: Development
+2025-04-07 16:52:09.472 -03:00 [INF] Content root path: C:\Users\celou\OneDrive\Documents\GitHub\LooveTaskManager\LooveTaskManager.API
+2025-04-07 16:52:11.669 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:8103/api/tasks - application/json 125
+2025-04-07 16:52:11.699 -03:00 [WRN] Failed to determine the https port for redirect.
+2025-04-07 16:52:11.703 -03:00 [INF] Executing endpoint 'LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API)'
+2025-04-07 16:52:11.718 -03:00 [INF] Route matched with {action = "Create", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(LooveTaskManager.Application.DTOs.CreateTaskRequest) on controller LooveTaskManager.API.Controllers.TaskController (LooveTaskManager.API).
+2025-04-07 16:52:11.843 -03:00 [INF] Criando nova tarefa com título: Tarefa de Teste
+2025-04-07 16:52:12.619 -03:00 [INF] Executed DbCommand (62ms) [Parameters=[@__title_0='?' (Size = 200)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Tasks] AS [t]
+        WHERE [t].[Title] = @__title_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 16:52:12.657 -03:00 [WRN] Já existe uma tarefa com o título: Tarefa de Teste
+2025-04-07 16:52:12.660 -03:00 [ERR] Erro ao criar tarefa
+LooveTaskManager.Domain.Common.Exceptions.CustomException: Já existe uma tarefa com este título
+   at LooveTaskManager.Application.Services.CreateTaskService.ExecuteAsync(CreateTaskRequest request) in C:\Users\celou\OneDrive\Documents\GitHub\LooveTaskManager\LooveTaskManager.Application\Services\CreateTaskService.cs:line 45
+2025-04-07 16:52:12.680 -03:00 [INF] Executed action LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API) in 954.875ms
+2025-04-07 16:52:12.701 -03:00 [INF] Executed endpoint 'LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API)'
+2025-04-07 16:52:12.716 -03:00 [WRN] Domain error: Já existe uma tarefa com este título, ErrorCode: TASK_TITLE_ALREADY_EXISTS, StatusCode: 409
+2025-04-07 16:52:12.729 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:8103/api/tasks - 409 null application/problem+json 1060.8237ms
+2025-04-07 16:52:36.571 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:8103/api/tasks - application/json 129
+2025-04-07 16:52:36.575 -03:00 [INF] Executing endpoint 'LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API)'
+2025-04-07 16:52:36.576 -03:00 [INF] Route matched with {action = "Create", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(LooveTaskManager.Application.DTOs.CreateTaskRequest) on controller LooveTaskManager.API.Controllers.TaskController (LooveTaskManager.API).
+2025-04-07 16:52:36.580 -03:00 [INF] Criando nova tarefa com título: Tarefa de Teste 2
+2025-04-07 16:52:36.604 -03:00 [INF] Executed DbCommand (4ms) [Parameters=[@__title_0='?' (Size = 200)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Tasks] AS [t]
+        WHERE [t].[Title] = @__title_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 16:52:36.608 -03:00 [WRN] Já existe uma tarefa com o título: Tarefa de Teste 2
+2025-04-07 16:52:36.609 -03:00 [ERR] Erro ao criar tarefa
+LooveTaskManager.Domain.Common.Exceptions.CustomException: Já existe uma tarefa com este título
+   at LooveTaskManager.Application.Services.CreateTaskService.ExecuteAsync(CreateTaskRequest request) in C:\Users\celou\OneDrive\Documents\GitHub\LooveTaskManager\LooveTaskManager.Application\Services\CreateTaskService.cs:line 45
+2025-04-07 16:52:36.612 -03:00 [INF] Executed action LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API) in 33.7264ms
+2025-04-07 16:52:36.614 -03:00 [INF] Executed endpoint 'LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API)'
+2025-04-07 16:52:36.617 -03:00 [WRN] Domain error: Já existe uma tarefa com este título, ErrorCode: TASK_TITLE_ALREADY_EXISTS, StatusCode: 409
+2025-04-07 16:52:36.619 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:8103/api/tasks - 409 null application/problem+json 47.871ms
+2025-04-07 16:52:50.093 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:8103/api/tasks - null null
+2025-04-07 16:52:50.110 -03:00 [INF] Executing endpoint 'LooveTaskManager.API.Controllers.TaskController.GetAllTasks (LooveTaskManager.API)'
+2025-04-07 16:52:50.116 -03:00 [INF] Route matched with {action = "GetAllTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllTasks(Int32, Int32) on controller LooveTaskManager.API.Controllers.TaskController (LooveTaskManager.API).
+2025-04-07 16:52:50.124 -03:00 [INF] Buscando tarefas. Skip: 0, Take: 10
+2025-04-07 16:52:50.219 -03:00 [INF] Executed DbCommand (12ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[Description], [t].[DueDate], [t].[Status], [t].[Title]
+FROM [Tasks] AS [t]
+ORDER BY [t].[CreatedAt] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-07 16:52:50.299 -03:00 [INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+2025-04-07 16:52:50.304 -03:00 [INF] Encontradas 4 tarefas de um total de 4
+2025-04-07 16:52:50.310 -03:00 [INF] Executing OkObjectResult, writing value of type 'LooveTaskManager.Application.DTOs.TaskListResponseDTO'.
+2025-04-07 16:52:50.333 -03:00 [INF] Executed action LooveTaskManager.API.Controllers.TaskController.GetAllTasks (LooveTaskManager.API) in 214.7573ms
+2025-04-07 16:52:50.336 -03:00 [INF] Executed endpoint 'LooveTaskManager.API.Controllers.TaskController.GetAllTasks (LooveTaskManager.API)'
+2025-04-07 16:52:50.337 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:8103/api/tasks - 200 null application/json; charset=utf-8 244.1103ms
+2025-04-07 16:53:06.062 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:8103/ - null null
+2025-04-07 16:53:06.066 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:8103/ - 404 0 null 4.1306ms
+2025-04-07 16:53:06.070 -03:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:8103/, Response status code: 404
+2025-04-07 16:53:10.311 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:8103/swagger/index.html - null null
+2025-04-07 16:53:10.350 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:8103/swagger/index.html - 200 null text/html;charset=utf-8 39.1651ms
+2025-04-07 16:53:10.515 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:8103/swagger/v1/swagger.json - null null
+2025-04-07 16:53:10.612 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:8103/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 96.6558ms
+2025-04-07 16:53:20.142 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:8103/api/tasks - application/json 106
+2025-04-07 16:53:20.145 -03:00 [INF] Executing endpoint 'LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API)'
+2025-04-07 16:53:20.147 -03:00 [INF] Route matched with {action = "Create", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(LooveTaskManager.Application.DTOs.CreateTaskRequest) on controller LooveTaskManager.API.Controllers.TaskController (LooveTaskManager.API).
+2025-04-07 16:53:20.151 -03:00 [INF] Criando nova tarefa com título: string
+2025-04-07 16:53:20.155 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__title_0='?' (Size = 200)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Tasks] AS [t]
+        WHERE [t].[Title] = @__title_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 16:53:20.157 -03:00 [WRN] Já existe uma tarefa com o título: string
+2025-04-07 16:53:20.158 -03:00 [ERR] Erro ao criar tarefa
+LooveTaskManager.Domain.Common.Exceptions.CustomException: Já existe uma tarefa com este título
+   at LooveTaskManager.Application.Services.CreateTaskService.ExecuteAsync(CreateTaskRequest request) in C:\Users\celou\OneDrive\Documents\GitHub\LooveTaskManager\LooveTaskManager.Application\Services\CreateTaskService.cs:line 45
+2025-04-07 16:53:20.160 -03:00 [INF] Executed action LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API) in 10.1794ms
+2025-04-07 16:53:20.161 -03:00 [INF] Executed endpoint 'LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API)'
+2025-04-07 16:53:20.162 -03:00 [WRN] Domain error: Já existe uma tarefa com este título, ErrorCode: TASK_TITLE_ALREADY_EXISTS, StatusCode: 409
+2025-04-07 16:53:20.163 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:8103/api/tasks - 409 null application/problem+json 21.5789ms
+2025-04-07 16:53:38.847 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:8103/api/tasks - application/json 112
+2025-04-07 16:53:38.850 -03:00 [INF] Executing endpoint 'LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API)'
+2025-04-07 16:53:38.852 -03:00 [INF] Route matched with {action = "Create", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(LooveTaskManager.Application.DTOs.CreateTaskRequest) on controller LooveTaskManager.API.Controllers.TaskController (LooveTaskManager.API).
+2025-04-07 16:53:38.855 -03:00 [INF] Criando nova tarefa com título: Vamos testar
+2025-04-07 16:53:38.858 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__title_0='?' (Size = 200)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Tasks] AS [t]
+        WHERE [t].[Title] = @__title_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 16:53:38.860 -03:00 [WRN] Já existe uma tarefa com o título: Vamos testar
+2025-04-07 16:53:38.861 -03:00 [ERR] Erro ao criar tarefa
+LooveTaskManager.Domain.Common.Exceptions.CustomException: Já existe uma tarefa com este título
+   at LooveTaskManager.Application.Services.CreateTaskService.ExecuteAsync(CreateTaskRequest request) in C:\Users\celou\OneDrive\Documents\GitHub\LooveTaskManager\LooveTaskManager.Application\Services\CreateTaskService.cs:line 45
+2025-04-07 16:53:38.863 -03:00 [INF] Executed action LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API) in 9.3169ms
+2025-04-07 16:53:38.866 -03:00 [INF] Executed endpoint 'LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API)'
+2025-04-07 16:53:38.867 -03:00 [WRN] Domain error: Já existe uma tarefa com este título, ErrorCode: TASK_TITLE_ALREADY_EXISTS, StatusCode: 409
+2025-04-07 16:53:38.869 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:8103/api/tasks - 409 null application/problem+json 22.2581ms
+2025-04-07 16:55:20.142 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:8103/api/tasks - null null
+2025-04-07 16:55:20.145 -03:00 [INF] Executing endpoint 'LooveTaskManager.API.Controllers.TaskController.GetAllTasks (LooveTaskManager.API)'
+2025-04-07 16:55:20.146 -03:00 [INF] Route matched with {action = "GetAllTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllTasks(Int32, Int32) on controller LooveTaskManager.API.Controllers.TaskController (LooveTaskManager.API).
+2025-04-07 16:55:20.148 -03:00 [INF] Buscando tarefas. Skip: 0, Take: 10
+2025-04-07 16:55:20.154 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[Description], [t].[DueDate], [t].[Status], [t].[Title]
+FROM [Tasks] AS [t]
+ORDER BY [t].[CreatedAt] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-07 16:55:20.159 -03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+2025-04-07 16:55:20.162 -03:00 [INF] Encontradas 4 tarefas de um total de 4
+2025-04-07 16:55:20.163 -03:00 [INF] Executing OkObjectResult, writing value of type 'LooveTaskManager.Application.DTOs.TaskListResponseDTO'.
+2025-04-07 16:55:20.165 -03:00 [INF] Executed action LooveTaskManager.API.Controllers.TaskController.GetAllTasks (LooveTaskManager.API) in 16.9123ms
+2025-04-07 16:55:20.167 -03:00 [INF] Executed endpoint 'LooveTaskManager.API.Controllers.TaskController.GetAllTasks (LooveTaskManager.API)'
+2025-04-07 16:55:20.169 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:8103/api/tasks - 200 null application/json; charset=utf-8 26.5501ms
+2025-04-07 16:55:24.600 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:8103/api/tasks - application/json 124
+2025-04-07 16:55:24.604 -03:00 [INF] Executing endpoint 'LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API)'
+2025-04-07 16:55:24.605 -03:00 [INF] Route matched with {action = "Create", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(LooveTaskManager.Application.DTOs.CreateTaskRequest) on controller LooveTaskManager.API.Controllers.TaskController (LooveTaskManager.API).
+2025-04-07 16:55:24.607 -03:00 [INF] Criando nova tarefa com título: Nova Tarefa Única
+2025-04-07 16:55:24.611 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__title_0='?' (Size = 200)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Tasks] AS [t]
+        WHERE [t].[Title] = @__title_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 16:55:24.630 -03:00 [ERR] Erro ao criar tarefa
+LooveTaskManager.Domain.Common.Exceptions.CustomException: A data de vencimento não pode ser no passado
+   at LooveTaskManager.Application.Services.CreateTaskService.ExecuteAsync(CreateTaskRequest request) in C:\Users\celou\OneDrive\Documents\GitHub\LooveTaskManager\LooveTaskManager.Application\Services\CreateTaskService.cs:line 62
+2025-04-07 16:55:24.633 -03:00 [INF] Executed action LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API) in 25.8906ms
+2025-04-07 16:55:24.635 -03:00 [INF] Executed endpoint 'LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API)'
+2025-04-07 16:55:24.636 -03:00 [WRN] Domain error: A data de vencimento não pode ser no passado, ErrorCode: VALIDATION_ERROR, StatusCode: 400
+2025-04-07 16:55:24.638 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:8103/api/tasks - 400 null application/problem+json 38.2375ms
+2025-04-07 16:55:29.996 -03:00 [INF] Request starting HTTP/1.1 POST http://localhost:8103/api/tasks - application/json 124
+2025-04-07 16:55:29.998 -03:00 [INF] Executing endpoint 'LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API)'
+2025-04-07 16:55:29.999 -03:00 [INF] Route matched with {action = "Create", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Create(LooveTaskManager.Application.DTOs.CreateTaskRequest) on controller LooveTaskManager.API.Controllers.TaskController (LooveTaskManager.API).
+2025-04-07 16:55:30.002 -03:00 [INF] Criando nova tarefa com título: Nova Tarefa Única
+2025-04-07 16:55:30.005 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__title_0='?' (Size = 200)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Tasks] AS [t]
+        WHERE [t].[Title] = @__title_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 16:55:30.086 -03:00 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime2), @p2='?' (Size = 4000), @p3='?' (DbType = DateTime2), @p4='?' (DbType = Int32), @p5='?' (Size = 200)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Tasks] ([Id], [CreatedAt], [Description], [DueDate], [Status], [Title])
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+2025-04-07 16:55:30.095 -03:00 [INF] Tarefa criada com sucesso. ID: "8d9ade08-7fcb-43aa-a8db-a1286ef533c0"
+2025-04-07 16:55:30.097 -03:00 [INF] Executing CreatedAtActionResult, writing value of type 'LooveTaskManager.Application.DTOs.TaskResponseDTO'.
+2025-04-07 16:55:30.108 -03:00 [INF] Executed action LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API) in 106.6093ms
+2025-04-07 16:55:30.109 -03:00 [INF] Executed endpoint 'LooveTaskManager.API.Controllers.TaskController.Create (LooveTaskManager.API)'
+2025-04-07 16:55:30.111 -03:00 [INF] Request finished HTTP/1.1 POST http://localhost:8103/api/tasks - 201 null application/json; charset=utf-8 115.2018ms
+2025-04-07 16:55:39.140 -03:00 [INF] Request starting HTTP/1.1 GET http://localhost:8103/api/tasks - null null
+2025-04-07 16:55:39.143 -03:00 [INF] Executing endpoint 'LooveTaskManager.API.Controllers.TaskController.GetAllTasks (LooveTaskManager.API)'
+2025-04-07 16:55:39.144 -03:00 [INF] Route matched with {action = "GetAllTasks", controller = "Task"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllTasks(Int32, Int32) on controller LooveTaskManager.API.Controllers.TaskController (LooveTaskManager.API).
+2025-04-07 16:55:39.146 -03:00 [INF] Buscando tarefas. Skip: 0, Take: 10
+2025-04-07 16:55:39.150 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [t].[Id], [t].[CreatedAt], [t].[Description], [t].[DueDate], [t].[Status], [t].[Title]
+FROM [Tasks] AS [t]
+ORDER BY [t].[CreatedAt] DESC
+OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+2025-04-07 16:55:39.155 -03:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Tasks] AS [t]
+2025-04-07 16:55:39.157 -03:00 [INF] Encontradas 5 tarefas de um total de 5
+2025-04-07 16:55:39.159 -03:00 [INF] Executing OkObjectResult, writing value of type 'LooveTaskManager.Application.DTOs.TaskListResponseDTO'.
+2025-04-07 16:55:39.160 -03:00 [INF] Executed action LooveTaskManager.API.Controllers.TaskController.GetAllTasks (LooveTaskManager.API) in 14.5556ms
+2025-04-07 16:55:39.162 -03:00 [INF] Executed endpoint 'LooveTaskManager.API.Controllers.TaskController.GetAllTasks (LooveTaskManager.API)'
+2025-04-07 16:55:39.163 -03:00 [INF] Request finished HTTP/1.1 GET http://localhost:8103/api/tasks - 200 null application/json; charset=utf-8 22.0445ms
+2025-04-07 17:45:30.903 -03:00 [INF] Executed DbCommand (22ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-04-07 17:45:30.975 -03:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-04-07 17:45:30.980 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT 1
+2025-04-07 17:45:30.985 -03:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT OBJECT_ID(N'[__EFMigrationsHistory]');
+2025-04-07 17:45:31.033 -03:00 [INF] Executed DbCommand (33ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [MigrationId], [ProductVersion]
+FROM [__EFMigrationsHistory]
+ORDER BY [MigrationId];
+2025-04-07 17:45:57.428 -03:00 [WRN] Failed to determine the https port for redirect.
+2025-04-07 17:45:57.636 -03:00 [INF] Iniciando criação de tarefa
+2025-04-07 17:45:57.639 -03:00 [INF] Verificando existência da entidade
+2025-04-07 17:45:58.430 -03:00 [INF] Executed DbCommand (38ms) [Parameters=[@__title_0='?' (Size = 200)], CommandType='"Text"', CommandTimeout='30']
+SELECT CASE
+    WHEN EXISTS (
+        SELECT 1
+        FROM [Tasks] AS [t]
+        WHERE [t].[Title] = @__title_0) THEN CAST(1 AS bit)
+    ELSE CAST(0 AS bit)
+END
+2025-04-07 17:45:58.455 -03:00 [WRN] Falha ao criar tarefa
+2025-04-07 17:45:58.463 -03:00 [WRN] Domain error: Já existe uma tarefa com este título, ErrorCode: TASK_TITLE_ALREADY_EXISTS, StatusCode: 409
+2025-04-07 17:49:24.478 -03:00 [WRN] Failed to determine the https port for redirect.
+2025-04-07 17:49:24.639 -03:00 [INF] Iniciando criação de tarefa
+2025-04-07 17:49:24.643 -03:00 [INF] Verificando existência de tarefa por título
+2025-04-07 17:49:25.351 -03:00 [WRN] Tentativa de criação de tarefa com título duplicado
+2025-04-07 17:49:25.364 -03:00 [WRN] Erro de domínio: TASK_TITLE_ALREADY_EXISTS, Status: 409
+2025-04-07 17:49:34.788 -03:00 [INF] Iniciando criação de tarefa
+2025-04-07 17:49:34.789 -03:00 [INF] Verificando existência de tarefa por título
+2025-04-07 17:49:34.887 -03:00 [WRN] Falha na validação da tarefa
+2025-04-07 17:49:34.889 -03:00 [WRN] Erro de domínio: VALIDATION_ERROR, Status: 400
+2025-04-07 17:49:50.054 -03:00 [INF] Iniciando criação de tarefa
+2025-04-07 17:49:50.055 -03:00 [INF] Verificando existência de tarefa por título
+2025-04-07 17:49:50.106 -03:00 [INF] Adicionando nova tarefa
+2025-04-07 17:49:50.246 -03:00 [INF] Tarefa adicionada com sucesso
+2025-04-07 17:49:50.248 -03:00 [INF] Tarefa criada com sucesso. ID: "d8e03e52-3de0-4f71-9059-78536db3ad5f"
+2025-04-07 18:00:34.372 -03:00 [WRN] Failed to determine the https port for redirect.
+2025-04-07 18:00:34.522 -03:00 [INF] Iniciando criação de tarefa
+2025-04-07 18:00:34.525 -03:00 [INF] Iniciando criação de tarefa
+2025-04-07 18:00:34.527 -03:00 [INF] Verificando existência de tarefa por título
+2025-04-07 18:00:35.263 -03:00 [WRN] Tentativa de criação de tarefa com título duplicado
+2025-04-07 18:00:35.269 -03:00 [ERR] Erro não tratado: Já existe uma tarefa com este título
+LooveTaskManager.Domain.Common.Exceptions.CustomException: Já existe uma tarefa com este título
+   at LooveTaskManager.Application.Services.CreateTaskService.ExecuteAsync(CreateTaskRequestDTO request) in C:\Users\celou\OneDrive\Documents\GitHub\LooveTaskManager\LooveTaskManager.Application\Services\CreateTaskService.cs:line 40
+   at LooveTaskManager.API.Controllers.TaskController.Create(CreateTaskRequestDTO request) in C:\Users\celou\OneDrive\Documents\GitHub\LooveTaskManager\LooveTaskManager.API\Controllers\TaskController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at LooveTaskManager.API.Middlewares.ErrorHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\celou\OneDrive\Documents\GitHub\LooveTaskManager\LooveTaskManager.API\Middlewares\ErrorHandlingMiddleware.cs:line 28
+2025-04-07 18:00:49.456 -03:00 [INF] Iniciando criação de tarefa
+2025-04-07 18:00:49.458 -03:00 [INF] Iniciando criação de tarefa
+2025-04-07 18:00:49.459 -03:00 [INF] Verificando existência de tarefa por título
+2025-04-07 18:00:49.478 -03:00 [WRN] Tentativa de criação de tarefa com título duplicado
+2025-04-07 18:00:49.480 -03:00 [ERR] Erro não tratado: Já existe uma tarefa com este título
+LooveTaskManager.Domain.Common.Exceptions.CustomException: Já existe uma tarefa com este título
+   at LooveTaskManager.Application.Services.CreateTaskService.ExecuteAsync(CreateTaskRequestDTO request) in C:\Users\celou\OneDrive\Documents\GitHub\LooveTaskManager\LooveTaskManager.Application\Services\CreateTaskService.cs:line 40
+   at LooveTaskManager.API.Controllers.TaskController.Create(CreateTaskRequestDTO request) in C:\Users\celou\OneDrive\Documents\GitHub\LooveTaskManager\LooveTaskManager.API\Controllers\TaskController.cs:line 53
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(ActionContext actionContext, IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeInnerFilterAsync>g__Awaited|13_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Awaited|17_0(ResourceInvoker invoker, Task task, IDisposable scope)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at LooveTaskManager.API.Middlewares.ErrorHandlingMiddleware.InvokeAsync(HttpContext context) in C:\Users\celou\OneDrive\Documents\GitHub\LooveTaskManager\LooveTaskManager.API\Middlewares\ErrorHandlingMiddleware.cs:line 28
+2025-04-07 18:02:27.176 -03:00 [WRN] Failed to determine the https port for redirect.
+2025-04-07 18:02:27.327 -03:00 [INF] Iniciando criação de tarefa
+2025-04-07 18:02:27.330 -03:00 [INF] Iniciando criação de tarefa
+2025-04-07 18:02:27.333 -03:00 [INF] Verificando existência de tarefa por título
+2025-04-07 18:02:28.125 -03:00 [WRN] Tentativa de criação de tarefa com título duplicado
+2025-04-07 18:02:28.131 -03:00 [WRN] Erro de domínio: Já existe uma tarefa com este título, Status: Conflict
+2025-04-07 18:24:48.300 -03:00 [WRN] Failed to determine the https port for redirect.
+2025-04-07 18:24:57.024 -03:00 [INF] Iniciando criação de tarefa
+2025-04-07 18:24:57.028 -03:00 [INF] Iniciando criação de tarefa
+2025-04-07 18:24:57.031 -03:00 [INF] Verificando existência de tarefa por título
+2025-04-07 18:24:57.857 -03:00 [WRN] Tentativa de criação de tarefa com título duplicado
+2025-04-07 18:24:57.866 -03:00 [WRN] Erro de domínio: Já existe uma tarefa com este título, Status: Conflict
+2025-04-07 18:26:37.293 -03:00 [WRN] Failed to determine the https port for redirect.
+2025-04-07 18:26:37.447 -03:00 [INF] Iniciando criação de tarefa
+2025-04-07 18:26:37.451 -03:00 [INF] Iniciando criação de tarefa
+2025-04-07 18:26:37.452 -03:00 [INF] Verificando existência de tarefa por título
+2025-04-07 18:26:38.220 -03:00 [WRN] Tentativa de criação de tarefa com título duplicado
+2025-04-07 18:26:38.262 -03:00 [WRN] Erro de domínio: Já existe uma tarefa com este título, Status: Conflict
+2025-04-07 19:12:18.003 -03:00 [WRN] Failed to determine the https port for redirect.
+2025-04-07 19:12:28.393 -03:00 [INF] Iniciando criação de tarefa
+2025-04-07 19:12:28.396 -03:00 [INF] Iniciando criação de tarefa
+2025-04-07 19:12:28.399 -03:00 [INF] Verificando existência de tarefa por título
+2025-04-07 19:12:29.258 -03:00 [WRN] Tentativa de criação de tarefa com título duplicado
+2025-04-07 19:12:29.278 -03:00 [WRN] Erro de domínio: Já existe uma tarefa com este título, Status: Conflict
+2025-04-07 19:14:04.722 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:14:04.760 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:14:04.771 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:14:05.885 -03:00 [INF] Obtendo total de tarefas
+2025-04-07 19:14:05.942 -03:00 [INF] Tarefas obtidas com sucesso. Total: 6
+2025-04-07 19:14:19.927 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:14:19.927 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:14:19.928 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:14:19.949 -03:00 [INF] Obtendo total de tarefas
+2025-04-07 19:14:19.952 -03:00 [INF] Tarefas obtidas com sucesso. Total: 6
+2025-04-07 19:14:37.045 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:14:37.045 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:14:37.046 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:14:37.135 -03:00 [INF] Obtendo total de tarefas
+2025-04-07 19:14:37.137 -03:00 [INF] Tarefas obtidas com sucesso. Total: 6
+2025-04-07 19:17:20.693 -03:00 [WRN] Failed to determine the https port for redirect.
+2025-04-07 19:17:31.658 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:17:31.662 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:17:31.664 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:17:32.413 -03:00 [INF] Obtendo total de tarefas
+2025-04-07 19:17:32.464 -03:00 [INF] Tarefas obtidas com sucesso. Total: 6
+2025-04-07 19:17:48.621 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:17:48.623 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:17:48.624 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:17:48.640 -03:00 [INF] Obtendo total de tarefas
+2025-04-07 19:17:48.643 -03:00 [INF] Tarefas obtidas com sucesso. Total: 6
+2025-04-07 19:18:15.578 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:18:15.580 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:18:15.582 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:18:15.634 -03:00 [INF] Obtendo total de tarefas
+2025-04-07 19:18:15.639 -03:00 [INF] Tarefas obtidas com sucesso. Total: 6
+2025-04-07 19:18:25.313 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:18:25.315 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:18:25.315 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:18:25.320 -03:00 [INF] Obtendo total de tarefas
+2025-04-07 19:18:25.322 -03:00 [INF] Tarefas obtidas com sucesso. Total: 6
+2025-04-07 19:18:38.713 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:18:38.715 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:18:38.716 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:18:38.758 -03:00 [INF] Obtendo total de tarefas
+2025-04-07 19:18:38.761 -03:00 [INF] Tarefas obtidas com sucesso. Total: 6
+2025-04-07 19:18:47.313 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:18:47.314 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:18:47.315 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:18:47.324 -03:00 [INF] Obtendo total de tarefas
+2025-04-07 19:18:47.327 -03:00 [INF] Tarefas obtidas com sucesso. Total: 6
+2025-04-07 19:19:14.349 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:19:14.352 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:19:14.353 -03:00 [INF] Obtendo lista de tarefas
+2025-04-07 19:19:14.358 -03:00 [INF] Obtendo total de tarefas
+2025-04-07 19:19:14.362 -03:00 [INF] Tarefas obtidas com sucesso. Total: 6
