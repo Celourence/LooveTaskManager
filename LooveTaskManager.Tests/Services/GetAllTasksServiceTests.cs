@@ -1,6 +1,5 @@
 using System.Net;
 using LooveTaskManager.Application.Constants;
-using LooveTaskManager.Application.DTOs;
 using LooveTaskManager.Application.Services;
 using LooveTaskManager.Domain.Common.Constants;
 using LooveTaskManager.Domain.Common.Exceptions;
@@ -8,8 +7,6 @@ using LooveTaskManager.Domain.Entities;
 using LooveTaskManager.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
 using Moq;
-using System.Linq;
-using Xunit;
 
 namespace LooveTaskManager.Tests.Services;
 

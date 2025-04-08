@@ -11,6 +11,7 @@
 *.suo
 *.user
 *.sln.docstates
+.vs/
 
 # Build results
 [Dd]ebug/
@@ -18,6 +19,7 @@
 x64/
 [Bb]in/
 [Oo]bj/
+publish/
 # build folder is nowadays used for build scripts and should not be ignored
 #build/
 

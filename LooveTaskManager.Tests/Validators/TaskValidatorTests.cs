@@ -1,8 +1,6 @@
-using FluentValidation;
 using LooveTaskManager.Domain.Common.Constants;
 using LooveTaskManager.Domain.Entities;
 using LooveTaskManager.Domain.Validators;
-using Xunit;
 
 namespace LooveTaskManager.Tests.Validators;
 

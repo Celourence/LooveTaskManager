@@ -2,11 +2,7 @@ using System.Net;
 using System.Text.Json;
 using LooveTaskManager.Domain.Common.Exceptions;
 using LooveTaskManager.API.Models;
-using FluentValidation;
 using LooveTaskManager.Application.Constants;
-using LooveTaskManager.Application.DTOs;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 using System.Text;
 
 namespace LooveTaskManager.API.Middlewares;

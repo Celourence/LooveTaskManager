@@ -20,6 +20,7 @@ public static class ErrorCodes
         public const string TitleTooLong = "TASK_TITLE_TOO_LONG";
         public const string TitleAlreadyExists = "TASK_TITLE_ALREADY_EXISTS";
         public const string TaskNotFound = "TASK_NOT_FOUND";
+        public const string InvalidStatus = "TASK_INVALID_STATUS";
     }
 
     public static class Repository
@@ -30,5 +31,13 @@ public static class ErrorCodes
         public const string UpdateEntityError = "REPOSITORY_UPDATE_ENTITY_ERROR";
         public const string RemoveEntityError = "REPOSITORY_REMOVE_ENTITY_ERROR";
         public const string EntityNotFound = "REPOSITORY_ENTITY_NOT_FOUND";
+    }
+
+    public static class Database
+    {
+        public const string ConnectionError = "DATABASE_CONNECTION_ERROR";
+        public const string QueryError = "DATABASE_QUERY_ERROR";
+        public const string SaveError = "DATABASE_SAVE_ERROR";
+        public const string DeleteError = "DATABASE_DELETE_ERROR";
     }
 } 

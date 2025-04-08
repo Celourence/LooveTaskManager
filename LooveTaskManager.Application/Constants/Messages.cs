@@ -6,43 +6,44 @@ public static class Messages
     {
         public static class Task
         {
-            public const string CreatingTask = "Iniciando criação de tarefa";
+            public const string CreatingTask = "Criando tarefa: {0}";
             public const string TaskCreated = "Tarefa criada com sucesso. ID: {0}";
-            public const string DuplicateTitle = "Tentativa de criação de tarefa com título duplicado";
-            public const string ValidationFailed = "Falha na validação da tarefa";
             public const string ErrorCreatingTask = "Erro ao criar tarefa";
-            public const string GettingTasks = "Obtendo lista de tarefas";
+            public const string GettingTasks = "Obtendo todas as tarefas";
             public const string TasksRetrieved = "Tarefas obtidas com sucesso. Total: {0}";
             public const string ErrorGettingTasks = "Erro ao obter tarefas";
-            public const string GettingTaskById = "Obtendo tarefa por ID: {0}";
+            public const string GettingTaskById = "Obtendo tarefa pelo ID: {0}";
             public const string TaskNotFound = "Tarefa não encontrada. ID: {0}";
-            public const string ErrorGettingTaskById = "Erro ao obter tarefa por ID: {0}";
-            public const string UpdatingTask = "Atualizando tarefa: {0}";
-            public const string TaskUpdated = "Tarefa atualizada com sucesso";
+            public const string ErrorGettingTaskById = "Erro ao obter tarefa pelo ID";
+            public const string UpdatingTask = "Atualizando tarefa. ID: {0}";
+            public const string TaskUpdated = "Tarefa atualizada com sucesso. ID: {0}";
             public const string ErrorUpdatingTask = "Erro ao atualizar tarefa";
-            public const string DeletingTask = "Removendo tarefa: {0}";
-            public const string TaskDeleted = "Tarefa removida com sucesso";
-            public const string ErrorDeletingTask = "Erro ao remover tarefa";
+            public const string DeletingTask = "Excluindo tarefa. ID: {0}";
+            public const string TaskDeleted = "Tarefa excluída com sucesso. ID: {0}";
+            public const string ErrorDeletingTask = "Erro ao excluir tarefa";
+            public const string DuplicateTitle = "Já existe uma tarefa com o título: {0}";
+            public const string ValidationFailed = "Falha na validação da tarefa";
         }
 
         public static class Repository
         {
-            public const string AddingEntity = "Adicionando nova tarefa";
-            public const string EntityAdded = "Tarefa adicionada com sucesso";
-            public const string ErrorAddingTask = "Erro ao adicionar tarefa";
-            public const string CheckingEntityExists = "Verificando existência de tarefa";
-            public const string GettingAllEntities = "Obtendo lista de tarefas";
-            public const string ErrorGettingTasks = "Erro ao obter tarefas";
-            public const string GettingEntityById = "Obtendo tarefa por ID";
-            public const string UpdatingEntity = "Atualizando tarefa";
-            public const string EntityUpdated = "Tarefa atualizada com sucesso";
-            public const string ErrorUpdatingTask = "Erro ao atualizar tarefa";
-            public const string RemovingEntity = "Removendo tarefa";
-            public const string EntityRemoved = "Tarefa removida com sucesso";
-            public const string ErrorDeletingTask = "Erro ao remover tarefa";
+            public const string AddingEntity = "Adicionando entidade ao repositório";
+            public const string EntityAdded = "Entidade adicionada com sucesso";
+            public const string ErrorAddingTask = "Erro ao adicionar tarefa ao repositório";
+            public const string GettingAllEntities = "Obtendo todas as entidades";
+            public const string ErrorGettingTasks = "Erro ao obter tarefas do repositório";
+            public const string GettingEntityById = "Obtendo entidade pelo ID";
+            public const string ErrorGettingTaskById = "Erro ao obter tarefa pelo ID do repositório";
+            public const string UpdatingEntity = "Atualizando entidade no repositório";
+            public const string EntityUpdated = "Entidade atualizada com sucesso";
+            public const string ErrorUpdatingTask = "Erro ao atualizar tarefa no repositório";
+            public const string RemovingEntity = "Removendo entidade do repositório";
+            public const string EntityRemoved = "Entidade removida com sucesso";
+            public const string ErrorDeletingTask = "Erro ao excluir tarefa do repositório";
             public const string CountingTasks = "Contando total de tarefas";
             public const string GettingTotalTasks = "Obtendo total de tarefas";
-            public const string CheckingTitleExists = "Verificando existência de tarefa por título";
+            public const string CheckingTitleExists = "Verificando existência de título";
+            public const string CheckingEntityExists = "Verificando existência de entidade";
         }
 
         public static class Error
@@ -68,6 +69,7 @@ public static class Messages
             public const string TitleAlreadyExists = "Já existe uma tarefa com este título";
             public const string TaskNotFound = "Tarefa não encontrada";
             public const string InvalidStatus = "Status inválido";
+            public const string NotFound = "Tarefa não encontrada";
         }
 
         public static class Validation
@@ -81,9 +83,9 @@ public static class Messages
         public static class Database
         {
             public const string ConnectionError = "Erro ao conectar ao banco de dados";
-            public const string QueryError = "Erro ao executar consulta no banco de dados";
-            public const string SaveError = "Erro ao salvar dados no banco de dados";
-            public const string DeleteError = "Erro ao excluir dados do banco de dados";
+            public const string QueryError = "Erro ao consultar o banco de dados";
+            public const string SaveError = "Erro ao salvar no banco de dados";
+            public const string DeleteError = "Erro ao excluir do banco de dados";
         }
     }
 } 

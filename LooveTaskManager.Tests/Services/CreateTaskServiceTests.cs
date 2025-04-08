@@ -10,7 +10,6 @@ using LooveTaskManager.Domain.Interfaces;
 using LooveTaskManager.Domain.Validators;
 using Microsoft.Extensions.Logging;
 using Moq;
-using Xunit;
 
 namespace LooveTaskManager.Tests.Services;
 

@@ -6,8 +6,13 @@ namespace LooveTaskManager.Application.Mappings;
 
 public static class MappingConfig
 {
+    private static bool _isConfigured;
+
     public static void RegisterMappings()
     {
+        if (_isConfigured)
+            return;
+
         TypeAdapterConfig.GlobalSettings.Default.PreserveReference(true);
 
         TypeAdapterConfig<TaskItem, TaskResponseDTO>.NewConfig()
@@ -24,5 +29,7 @@ public static class MappingConfig
                 src.Description ?? string.Empty,
                 src.DueDate,
                 (Domain.Enums.TaskStatus)src.Status));
+
+        _isConfigured = true;
     }
 } 
