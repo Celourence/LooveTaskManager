@@ -22,6 +22,8 @@ public static class DependencyInjection
         services.AddScoped<ICreateTaskService, CreateTaskService>();
         services.AddScoped<IGetAllTasksService, GetAllTasksService>();
         services.AddScoped<IGetTaskByIdService, GetTaskByIdService>();
+        services.AddScoped<IUpdateTaskService, UpdateTaskService>();
+        services.AddScoped<IDeleteTaskService, DeleteTaskService>();
         services.AddScoped<IValidator<Domain.Entities.TaskItem>, TaskValidator>();
 
         return services;

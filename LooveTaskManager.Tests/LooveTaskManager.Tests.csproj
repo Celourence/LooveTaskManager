@@ -11,6 +11,8 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.11.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
     <PackageReference Include="Moq" Version="4.20.70" />
     <PackageReference Include="xunit" Version="2.7.0" />
@@ -28,6 +30,7 @@
     <ProjectReference Include="..\LooveTaskManager.Application\LooveTaskManager.Application.csproj" />
     <ProjectReference Include="..\LooveTaskManager.Domain\LooveTaskManager.Domain.csproj" />
     <ProjectReference Include="..\LooveTaskManager.Infrastructure\LooveTaskManager.Infrastructure.csproj" />
+    <ProjectReference Include="..\LooveTaskManager.API\LooveTaskManager.API.csproj" />
   </ItemGroup>
 
 </Project>

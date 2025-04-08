@@ -1,4 +1,3 @@
-using Xunit;
 using LooveTaskManager.Domain.Entities;
 
 namespace LooveTaskManager.Tests.Entities;
