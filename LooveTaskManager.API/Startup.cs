@@ -19,11 +19,7 @@ public class Startup
     {
         services.AddControllers();
         services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen(c =>
-        {
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = "Loove Task Manager API", Version = "v1" });
-            c.EnableAnnotations();
-        });
+        services.AddSwaggerConfig();
 
         services.AddInfrastructureServices(Configuration);
 
@@ -38,7 +34,7 @@ public class Startup
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Loove Task Manager API V1");
-                c.RoutePrefix = "swagger";
+                c.RoutePrefix = string.Empty;
             });
         }
 
