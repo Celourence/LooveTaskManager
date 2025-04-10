@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace LooveTaskManager.API.Controllers;
 
 [ApiController]
-[Route("api/v1/[controller]")]
+[Route("api/v1/tasks")]
 public class TaskController : ControllerBase
 {
     private readonly ICreateTaskService _createTaskService;
@@ -32,15 +32,15 @@ public class TaskController : ControllerBase
         _logger = logger;
     }
 
+    /// <response code="201">Retorna a tarefa criada</response>
+    /// <response code="400">Se os dados da tarefa forem inválidos</response>
+    /// <response code="409">Se já existir uma tarefa com o mesmo título</response>
+    /// <response code="500">Se ocorrer um erro interno</response>
     /// <summary>
     /// Cria uma nova tarefa
     /// </summary>
     /// <param name="request">Dados da tarefa a ser criada</param>
     /// <returns>Tarefa criada</returns>
-    /// <response code="201">Retorna a tarefa criada</response>
-    /// <response code="400">Se os dados da tarefa forem inválidos</response>
-    /// <response code="409">Se já existir uma tarefa com o mesmo título</response>
-    /// <response code="500">Se ocorrer um erro interno</response>
     [HttpPost]
     [ProducesResponseType(typeof(TaskResponseDTO), StatusCodes.Status201Created)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
@@ -53,14 +53,14 @@ public class TaskController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = result.Id }, result);
     }
 
+    /// <response code="200">Retorna a lista de tarefas</response>
+    /// <response code="500">Se ocorrer um erro interno</response>
     /// <summary>
     /// Obtém todas as tarefas com paginação
     /// </summary>
     /// <param name="skip">Número de registros a pular</param>
     /// <param name="take">Número de registros a retornar</param>
     /// <returns>Lista de tarefas</returns>
-    /// <response code="200">Retorna a lista de tarefas</response>
-    /// <response code="500">Se ocorrer um erro interno</response>
     [HttpGet]
     [ProducesResponseType(typeof(TaskListResponseDTO), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status500InternalServerError)]
@@ -71,14 +71,14 @@ public class TaskController : ControllerBase
         return Ok(result);
     }
 
+    /// <response code="200">Retorna a tarefa encontrada</response>
+    /// <response code="404">Se a tarefa não for encontrada</response>
+    /// <response code="500">Se ocorrer um erro interno</response>
     /// <summary>
     /// Obtém uma tarefa pelo ID
     /// </summary>
     /// <param name="id">ID da tarefa</param>
     /// <returns>Tarefa encontrada</returns>
-    /// <response code="200">Retorna a tarefa encontrada</response>
-    /// <response code="404">Se a tarefa não for encontrada</response>
-    /// <response code="500">Se ocorrer um erro interno</response>
     [HttpGet("{id}")]
     [ProducesResponseType(typeof(TaskResponseDTO), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
@@ -90,17 +90,17 @@ public class TaskController : ControllerBase
         return Ok(result);
     }
 
+    /// <response code="200">Retorna a tarefa atualizada</response>
+    /// <response code="400">Se os dados da tarefa forem inválidos</response>
+    /// <response code="404">Se a tarefa não for encontrada</response>
+    /// <response code="409">Se já existir uma tarefa com o mesmo título</response>
+    /// <response code="500">Se ocorrer um erro interno</response>
     /// <summary>
     /// Atualiza uma tarefa existente
     /// </summary>
     /// <param name="id">ID da tarefa</param>
     /// <param name="request">Dados atualizados da tarefa</param>
     /// <returns>Tarefa atualizada</returns>
-    /// <response code="200">Retorna a tarefa atualizada</response>
-    /// <response code="400">Se os dados da tarefa forem inválidos</response>
-    /// <response code="404">Se a tarefa não for encontrada</response>
-    /// <response code="409">Se já existir uma tarefa com o mesmo título</response>
-    /// <response code="500">Se ocorrer um erro interno</response>
     [HttpPut("{id}")]
     [ProducesResponseType(typeof(TaskResponseDTO), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
@@ -114,14 +114,14 @@ public class TaskController : ControllerBase
         return Ok(result);
     }
 
+    /// <response code="204">Tarefa excluída com sucesso</response>
+    /// <response code="404">Se a tarefa não for encontrada</response>
+    /// <response code="500">Se ocorrer um erro interno</response>
     /// <summary>
     /// Exclui uma tarefa
     /// </summary>
     /// <param name="id">ID da tarefa</param>
     /// <returns>Nenhum conteúdo</returns>
-    /// <response code="204">Tarefa excluída com sucesso</response>
-    /// <response code="404">Se a tarefa não for encontrada</response>
-    /// <response code="500">Se ocorrer um erro interno</response>
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
